@@ -1,14 +1,15 @@
 paddle = {}
 
+function paddle.load()
+  paddle.height = 50
+  paddle.width = 5
+  paddle.x = 50
+end
 
 function paddle.draw()
-  love.graphics.rectangle("fill", 50, p1y, 5, paddleHeight)
-  love.graphics.rectangle("fill", width - 50, p2y, 5, paddleHeight)
+  love.graphics.rectangle("fill", paddle.x, paddle.y, paddle.width, paddle.height)
 end
 
 function paddle.update()
-  local joysticks = love.joystick.getJoysticks()
-  local joystick = joysticks[1]
-  p2y = midHeight - paddleHeight / 2 + joystick:getGamepadAxis("righty") * (midHeight - paddleHeight / 2)
-  p1y = midHeight - paddleHeight / 2 + joystick:getGamepadAxis("lefty") * (midHeight  - paddleHeight / 2)
+paddle.y = midHeight - paddle.height / 2 + joystick:getGamepadAxis("lefty") * (midHeight  - paddle.height / 2)
 end
