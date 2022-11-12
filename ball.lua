@@ -1,18 +1,21 @@
 ball = {}
 
 function ball.load()
-  ball.x = love.graphics.getWidth() / 2
-  ball.y = love.graphics.getHeight() / 2
   ball.width = 5
   ball.height = 5
-  ball.speed = 100
+  newBall()
+end
+
+function newBall()
+  ball.speed = 200
+  ball.x = love.graphics.getWidth() / 2
+  ball.y = love.graphics.getHeight() / 2
   ballAngle = love.math.random() * love.math.random(-3, 2)
   ball.xDirection = 1
   if love.math.random() < 0.5 then
     ball.xDirection = -ball.xDirection
   end
 end
-
 
 
 function ball.draw()
@@ -28,11 +31,15 @@ function ball.update(dt)
   end
 
   if ball.x < 0 or ball.x > love.graphics.getWidth() - ball.width then
-    ball.xDirection = -ball.xDirection
+    if score > hiScore then
+      hiScore = score
+    end
+    score = 0
+    newBall()
+    gameStatus = "TitleScreen"
   end
 
-  if checkCollision(ball, paddle) or checkCollision(ball, paddle2) then
-    ball.xDirection = -ball.xDirection
-    ball.speed = ball.speed + 5
-  end
+  checkCollision(ball, paddle)
+  checkCollision(ball, paddle2)
+
 end

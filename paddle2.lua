@@ -1,7 +1,7 @@
 paddle2 = {}
 
 function paddle2.load()
-  paddle2.height = 50
+  paddle2.height = 100
   paddle2.width = 5
   paddle2.x = love.graphics.getWidth() - 50
 end
@@ -11,5 +11,5 @@ function paddle2.draw()
 end
 
 function paddle2.update()
-  paddle2.y = midHeight - paddleHeight / 2 + joystick:getGamepadAxis("righty") * (midHeight - paddleHeight / 2)
+  paddle2.y = midHeight - paddle2.height / 2 + joystick:getGamepadAxis("righty") * (midHeight - paddle2.height/ 2)
 end

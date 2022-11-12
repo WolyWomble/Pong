@@ -1,7 +1,7 @@
 paddle = {}
 
 function paddle.load()
-  paddle.height = 50
+  paddle.height = 100
   paddle.width = 5
   paddle.x = 50
 end
