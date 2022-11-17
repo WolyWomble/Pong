@@ -1,11 +1,14 @@
 require("paddle")
 require("paddle2")
 require("ball")
+require("intro")
 
 function love.load()
+  love.window.setFullscreen(true, "desktop")
   ball:load()
   paddle:load()
   paddle2:load()
+  intro:load()
   width = love.graphics.getWidth()
   height = love.graphics.getHeight()
   midHeight = height / 2
@@ -13,33 +16,35 @@ function love.load()
   score = 0
   hiScore = 0
   gameStatus = "TitleScreen"
+
 end
 
 function love.draw()
 
   if gameStatus == "TitleScreen" then
-    love.graphics.print(hiScore, love.graphics.getWidth() * 0.75, 50)
+    intro:draw()
   end
 
   if gameStatus == "Gameplay" then
     paddle:draw()
     paddle2:draw()
     ball:draw()
-    love.graphics.print(score, love.graphics.getWidth() / 4, 50)
-    love.graphics.print(hiScore, love.graphics.getWidth() * 0.75, 50)
+    love.graphics.print("Score: " .. score, love.graphics.getWidth() / 4, 50)
+    love.graphics.print("HiScore: " .. hiScore, love.graphics.getWidth() * 0.75, 50)
   end
 
 end
 
 function love.update(dt)
+  joysticks = love.joystick.getJoysticks()
+  joystick = joysticks[1]
+  anyDown = joystick:isGamepadDown("a", "start")
   if gameStatus == "TitleScreen" then
-    if love.keyboard.isDown("space") then
+    if anyDown then
       gameStatus = "Gameplay"
     end
   end
   if gameStatus == "Gameplay" then
-    joysticks = love.joystick.getJoysticks()
-    joystick = joysticks[1]
     paddle:update()
     paddle2:update()
     ball.update(dt)
@@ -54,7 +59,6 @@ function checkCollision(a, b)
   a.y < b.y + b.height then
     paddleLocation = (b.y + b.height / 2) / 20
     ballLocation = (a.y + a.height / 2) / 20
-    print(ballLocation, paddleLocation)
     collisionDetected(ballLocation - paddleLocation)
   end
 
