@@ -25,4 +25,4 @@ Paddles are controlled with the right and left analog stick.
 
 A video of the game being played and be found here:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/b46XROBwYyo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+https://www.youtube.com/embed/b46XROBwYyo
