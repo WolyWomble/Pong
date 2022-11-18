@@ -7,7 +7,7 @@ function ball.load()
 end
 
 function newBall()
-  ball.speed = 200
+  ball.speed = 400
   ball.x = love.graphics.getWidth() / 2
   ball.y = love.graphics.getHeight() / 2
   ballAngle = love.math.random() * love.math.random(-3, 2)
