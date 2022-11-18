@@ -12,7 +12,11 @@ High score currently reverts back to 0 when the game is reset.
 
 
 
-Currently love needs to be installed for the game to be played. 
+Pong.Exe will run in Windows (This is Untested)
+
+Pong.App will run on Mac
+
+Pong.Love will run on any os that have Love2d installed. 
 
 
 
